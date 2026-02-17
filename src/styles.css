@@ -3,3 +3,16 @@
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
+
+@theme {
+  --color-green-60: #00ff83;
+}
+
+@layer utilities {
+  [drawer-backdrop] {
+    background-color: rgba(0, 0, 0, 0.7) !important; /* deeper dim */
+  }
+  .text-green-60 {
+    color: var(--color-green-60);
+  }
+}
