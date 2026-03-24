@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { NavigationService } from '../../navigation.service';
+import { NavigationService } from '@core/services/navigation-service/navigation.service';
 import { RouterModule } from '@angular/router';
 import { Drawer } from 'flowbite';
 
@@ -12,10 +12,10 @@ import { Drawer } from 'flowbite';
 })
 export class SidebarComponent implements OnInit {
   isOpen = false;
-  @ViewChild("allProblemsLink",{static:false}) allProblemsLink!: ElementRef;
-  @ViewChild("drawer",{static:false}) drawer!: ElementRef;
+  @ViewChild("allProblemsLink", { static: false }) allProblemsLink!: ElementRef;
+  @ViewChild("drawer", { static: false }) drawer!: ElementRef;
 
-  constructor(private stateService: NavigationService) {}
+  constructor(private stateService: NavigationService) { }
 
   ngOnInit() {
     this.stateService.sidebarOpen$.subscribe(open => {
@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
         console.log(open)
         // Optional: Add focus logic here
         setTimeout(() => {
-          console.log("opened.",this.allProblemsLink.nativeElement)
+          console.log("opened.", this.allProblemsLink.nativeElement)
           this.allProblemsLink.nativeElement?.focus();
         }, 100);
       }

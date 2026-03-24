@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { initFlowbite } from 'flowbite'
-import { NavbarComponent } from './navigation/navbar/navbar.component';
-import { SidebarComponent } from './navigation/sidebar/sidebar.component';
-import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from '@shared/navigation/navbar/navbar.component';
 
 
 @Component({

@@ -1,0 +1,61 @@
+<div class="h-full w-full" *ngIf="!loading(); else loadingSkeleton">
+  <ng-container *ngIf="!error(); else errorState">
+    <as-split direction="horizontal" [gutterSize]="6" class="problem-split">
+      <!-- Left Panel: Problem Description -->
+      <as-split-area [size]="40" [minSize]="20">
+        <app-problem-description
+          *ngIf="problem()"
+          [problem]="problem()!"
+        ></app-problem-description>
+      </as-split-area>
+
+      <!-- Right Panel: Code Editor + Test Cases -->
+      <as-split-area [size]="60" [minSize]="30">
+        <as-split direction="vertical" [gutterSize]="6">
+          <!-- Code Editor -->
+          <as-split-area [size]="60" [minSize]="20">
+            <app-code-editor
+              *ngIf="problem()"
+              [starterCode]="problem()!.starterCode"
+              (codeChange)="onCodeChange($event)"
+              (languageChange)="onLanguageChange($event)"
+              (run)="onRun()"
+              (submit)="onSubmit()"
+            ></app-code-editor>
+          </as-split-area>
+
+          <!-- Test Cases -->
+          <as-split-area [size]="40" [minSize]="15">
+            <app-test-cases
+              *ngIf="problem()"
+              [testCases]="problem()!.testCases"
+              [submissionResult]="submissionResult()"
+            ></app-test-cases>
+          </as-split-area>
+        </as-split>
+      </as-split-area>
+    </as-split>
+  </ng-container>
+</div>
+
+<ng-template #loadingSkeleton>
+  <div class="h-full w-full flex items-center justify-center">
+    <div class="flex flex-col items-center gap-3">
+      <svg class="animate-spin h-8 w-8 text-green-60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span class="text-gray-400 text-sm">Loading problem...</span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #errorState>
+  <div class="h-full w-full flex items-center justify-center">
+    <div class="text-center">
+      <div class="text-6xl mb-4">404</div>
+      <p class="text-gray-400 text-lg mb-4">{{ error() }}</p>
+      <a routerLink="/" class="text-green-60 hover:underline">Go back home</a>
+    </div>
+  </div>
+</ng-template>

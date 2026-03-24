@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.problem-split {
+  height: 100%;
+}
+
+/* Style the split gutters */
+:host ::ng-deep .as-split-gutter {
+  background-color: #1e1e1e !important;
+  transition: background-color 0.15s;
+}
+
+:host ::ng-deep .as-split-gutter:hover {
+  background-color: #00ff83 !important;
+}
+
+:host ::ng-deep .as-split-area {
+  overflow: hidden;
+}

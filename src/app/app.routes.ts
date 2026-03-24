@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './features/home/home.component';
 
 export const routes: Routes = [
   {
@@ -8,7 +8,10 @@ export const routes: Routes = [
   },
   {
     path: 'problem/:id',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('./features/problem/problem-page.component').then(
+        m => m.ProblemPageComponent
+      ),
   },
   {
     path: 'problemset',
