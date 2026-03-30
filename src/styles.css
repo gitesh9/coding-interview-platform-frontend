@@ -6,6 +6,14 @@
 
 @theme {
   --color-green-60: #00ff83;
+  --grey-background: #ffffff14;
+  --opacity-white-80: #fff9;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
 }
 
 @layer utilities {
@@ -14,5 +22,11 @@
   }
   .text-green-60 {
     color: var(--color-green-60);
+  }
+  .bg-grey-10 {
+    background-color: var(--grey-background);
+  }
+  .text-secondary {
+    color: var(--opacity-white-80);
   }
 }

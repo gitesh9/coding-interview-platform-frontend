@@ -1,27 +1,33 @@
-<div class="h-full flex flex-col bg-[#1e1e1e] rounded-lg m-1 overflow-hidden">
+<div class="h-full flex flex-col bg-[#1e1e1e] rounded-lg overflow-hidden">
   <!-- Tabs -->
   <div class="flex border-b border-gray-700 shrink-0">
     <button
       (click)="setTab('description')"
-      [class]="activeTab() === 'description'
-        ? 'tab-btn text-white border-b-2 border-green-60'
-        : 'tab-btn text-gray-400 hover:text-gray-200'"
+      [class]="
+        activeTab() === 'description'
+          ? 'tab-btn text-white border-b-2 border-green-60'
+          : 'tab-btn text-gray-400 hover:text-gray-200'
+      "
     >
       Description
     </button>
     <button
       (click)="setTab('editorial')"
-      [class]="activeTab() === 'editorial'
-        ? 'tab-btn text-white border-b-2 border-green-60'
-        : 'tab-btn text-gray-400 hover:text-gray-200'"
+      [class]="
+        activeTab() === 'editorial'
+          ? 'tab-btn text-white border-b-2 border-green-60'
+          : 'tab-btn text-gray-400 hover:text-gray-200'
+      "
     >
       Editorial
     </button>
     <button
       (click)="setTab('solutions')"
-      [class]="activeTab() === 'solutions'
-        ? 'tab-btn text-white border-b-2 border-green-60'
-        : 'tab-btn text-gray-400 hover:text-gray-200'"
+      [class]="
+        activeTab() === 'solutions'
+          ? 'tab-btn text-white border-b-2 border-green-60'
+          : 'tab-btn text-gray-400 hover:text-gray-200'
+      "
     >
       Solutions
     </button>
@@ -53,7 +59,9 @@
       <!-- Examples -->
       <div class="space-y-4 mb-6">
         <div *ngFor="let example of problem.examples; let i = index">
-          <h3 class="text-white text-sm font-semibold mb-2">Example {{ i + 1 }}:</h3>
+          <h3 class="text-white text-sm font-semibold mb-2">
+            Example {{ i + 1 }}:
+          </h3>
           <div class="bg-[#2d2d2d] rounded-lg p-3 border-l-2 border-gray-600">
             <div class="text-sm">
               <div class="mb-1">
@@ -62,7 +70,9 @@
               </div>
               <div class="mb-1">
                 <span class="text-gray-400">Output: </span>
-                <span class="text-gray-200 font-mono">{{ example.output }}</span>
+                <span class="text-gray-200 font-mono">{{
+                  example.output
+                }}</span>
               </div>
               <div *ngIf="example.explanation" class="mt-1">
                 <span class="text-gray-400">Explanation: </span>
@@ -92,9 +102,18 @@
         <button
           class="flex items-center gap-2 px-4 py-2 text-sm bg-[#2d2d2d] text-gray-300 rounded-lg hover:bg-[#3d3d3d] hover:text-white transition-colors cursor-pointer"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            />
           </svg>
           Improve description with AI
         </button>
@@ -103,10 +122,21 @@
 
     <!-- Editorial Tab -->
     <ng-container *ngIf="activeTab() === 'editorial'">
-      <div class="flex flex-col items-center justify-center h-full text-gray-500">
-        <svg class="w-12 h-12 mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      <div
+        class="flex flex-col items-center justify-center h-full text-gray-500"
+      >
+        <svg
+          class="w-12 h-12 mb-3 opacity-50"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          />
         </svg>
         <p class="text-sm">Editorial coming soon</p>
       </div>
@@ -114,10 +144,21 @@
 
     <!-- Solutions Tab -->
     <ng-container *ngIf="activeTab() === 'solutions'">
-      <div class="flex flex-col items-center justify-center h-full text-gray-500">
-        <svg class="w-12 h-12 mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      <div
+        class="flex flex-col items-center justify-center h-full text-gray-500"
+      >
+        <svg
+          class="w-12 h-12 mb-3 opacity-50"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+          />
         </svg>
         <p class="text-sm">Community solutions coming soon</p>
       </div>

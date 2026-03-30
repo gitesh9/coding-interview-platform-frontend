@@ -1,13 +1,31 @@
 :host {
-  display: block;
+  display: flex;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .editor-instance {
   display: block;
   height: 100%;
+  flex: 1;
+  min-height: 0;
 }
 
 :host ::ng-deep .editor-instance .editor-container {
   height: 100% !important;
+}
+
+/* Ensure Monaco editor expands properly */
+:host ::ng-deep ngx-monaco-editor {
+  display: block;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+:host ::ng-deep .monaco-editor {
+  height: 100% !important;
+  width: 100% !important;
 }

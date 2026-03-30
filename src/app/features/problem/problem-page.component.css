@@ -20,4 +20,74 @@
 
 :host ::ng-deep .as-split-area {
   overflow: hidden;
+  /* Isolation to prevent cross-split interference */
+  isolation: isolate;
+  /* Reduced containment to allow proper layout calculations */
+  contain: style;
+}
+
+/* Ensure child components fill the area properly */
+:host ::ng-deep as-split-area > * {
+  height: 100%;
+  width: 100%;
+  /* Remove containment that interferes with nested splits */
+  position: relative;
+}
+
+/* Specific isolation for nested vertical splits */
+:host ::ng-deep as-split[direction="vertical"] {
+  /* Prevent layout interference with horizontal split */
+  contain: size style;
+  isolation: isolate;
+}
+
+/* Disable transitions during drag for better performance */
+:host ::ng-deep .as-split.as-dragging .as-split-area {
+  transition: none !important;
+  pointer-events: none;
+}
+
+/* Prevent cross-axis interference during drag operations */
+:host ::ng-deep .as-split.as-dragging {
+  /* Contain the drag operation to prevent affecting parent splits */
+  contain: layout size;
+}
+
+/* Specific handling for horizontal vs vertical splits */
+:host ::ng-deep as-split[direction="horizontal"] .as-split-gutter {
+  /* Ensure horizontal gutter stays put during vertical resizes */
+  position: relative;
+  z-index: 10;
+  /* Prevent flex basis changes from affecting this gutter */
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+:host ::ng-deep as-split[direction="vertical"] .as-split-gutter {
+  /* Vertical gutter should not affect horizontal layout */
+  position: relative;
+  z-index: 5;
+}
+
+/* Enable GPU acceleration for Monaco editor */
+:host ::ng-deep .monaco-editor {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Specific styles for the right panel to prevent cross-interference */
+:host ::ng-deep .right-panel {
+  /* Isolate the right panel layout */
+  isolation: isolate;
+  /* Prevent layout shifts affecting horizontal split */
+  contain: layout;
+}
+
+/* Vertical split specific isolation */
+:host ::ng-deep .vertical-split {
+  /* Ensure vertical split operations don't affect parent horizontal split */
+  transform: translateZ(0);
+  will-change: auto;
+  /* Contain size changes within this split */
+  contain: size layout;
 }

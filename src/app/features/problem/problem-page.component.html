@@ -10,8 +10,8 @@
       </as-split-area>
 
       <!-- Right Panel: Code Editor + Test Cases -->
-      <as-split-area [size]="60" [minSize]="30">
-        <as-split direction="vertical" [gutterSize]="6">
+      <as-split-area [size]="60" [minSize]="30" class="right-panel">
+        <as-split direction="vertical" [gutterSize]="6" class="vertical-split">
           <!-- Code Editor -->
           <as-split-area [size]="60" [minSize]="20">
             <app-code-editor
@@ -41,9 +41,25 @@
 <ng-template #loadingSkeleton>
   <div class="h-full w-full flex items-center justify-center">
     <div class="flex flex-col items-center gap-3">
-      <svg class="animate-spin h-8 w-8 text-green-60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      <svg
+        class="animate-spin h-8 w-8 text-green-60"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"
+        ></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        ></path>
       </svg>
       <span class="text-gray-400 text-sm">Loading problem...</span>
     </div>
