@@ -16,6 +16,12 @@ body {
   overflow: hidden;
 }
 
+/* Default text color for dark mode */
+html.dark,
+html.dark body {
+  color: white;
+}
+
 /* Ensure router-outlet content fills available height */
 router-outlet + * {
   height: 100%;
@@ -34,5 +40,8 @@ router-outlet + * {
   }
   .text-secondary {
     color: var(--opacity-white-80);
+  }
+  .highlighted {
+    color: #1d4ed8;
   }
 }
