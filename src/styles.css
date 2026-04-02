@@ -16,6 +16,12 @@ body {
   overflow: hidden;
 }
 
+/* Ensure router-outlet content fills available height */
+router-outlet + * {
+  height: 100%;
+  display: block;
+}
+
 @layer utilities {
   [drawer-backdrop] {
     background-color: rgba(0, 0, 0, 0.7) !important; /* deeper dim */
