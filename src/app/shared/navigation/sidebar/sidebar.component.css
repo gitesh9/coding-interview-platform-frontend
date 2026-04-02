@@ -1,0 +1,9 @@
+/* Ensure dark mode background is applied with higher specificity */
+/* .dark #drawer-navigation {
+  background-color: rgb(17 24 39) !important;
+} */
+
+/* Additional dark mode specificity for inner elements */
+/* .dark #drawer-navigation .bg-gray-50 {
+  background-color: rgb(55 65 81) !important;
+} */

@@ -4,7 +4,12 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
-@theme {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:where(.dark, .dark *));
+:root {
   --color-green-60: #00ff83;
   --grey-background: #ffffff14;
   --opacity-white-80: #fff9;

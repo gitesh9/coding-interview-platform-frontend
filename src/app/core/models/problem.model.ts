@@ -1,4 +1,3 @@
-
 export interface Problem {
   id: number;
   title: string;
@@ -8,6 +7,7 @@ export interface Problem {
   constraints: string[];
   starterCode: Record<string, string>;
   testCases: TestCase[];
+  isSolved?: boolean;
 }
 
 export interface Example {
@@ -23,7 +23,12 @@ export interface TestCase {
 }
 
 export interface SubmissionResult {
-  status: 'Accepted' | 'Wrong Answer' | 'Runtime Error' | 'Time Limit Exceeded' | 'Compilation Error';
+  status:
+    | 'Accepted'
+    | 'Wrong Answer'
+    | 'Runtime Error'
+    | 'Time Limit Exceeded'
+    | 'Compilation Error';
   runtime?: string;
   memory?: string;
   testCasesPassed?: number;

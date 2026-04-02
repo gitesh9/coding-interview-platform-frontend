@@ -9,13 +9,13 @@
 }
 
 /* Style the split gutters */
-:host ::ng-deep .as-split-gutter {
-  background-color: #1e1e1e !important;
+:host ::ng-deep .problem-split .as-split-gutter {
+  background-color: #000000;
   transition: background-color 0.15s;
 }
 
-:host ::ng-deep .as-split-gutter:hover {
-  background-color: #00ff83 !important;
+:host ::ng-deep .problem-split .as-split-gutter:hover {
+  background-color: #3b82f6;
 }
 
 :host ::ng-deep .as-split-area {
