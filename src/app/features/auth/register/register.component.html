@@ -1,0 +1,210 @@
+<div class="min-h-screen flex items-center justify-center bg-[#0a0a0f] px-4">
+  <div class="w-full max-w-md">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <a routerLink="/" class="inline-flex items-center gap-2.5 group">
+        <img
+          src="https://flowbite.com/docs/images/logo.svg"
+          class="h-8 transition-transform group-hover:scale-110"
+          alt="Logo"
+        />
+        <span class="text-xl font-semibold text-white tracking-tight">
+          Smart Coding Platform
+        </span>
+      </a>
+    </div>
+
+    <!-- Card -->
+    <div
+      class="bg-gray-900/50 border border-gray-800/50 rounded-2xl p-8 backdrop-blur-sm"
+    >
+      <h2 class="text-2xl font-bold text-white mb-2">Create an account</h2>
+      <p class="text-gray-400 text-sm mb-6">
+        Join as a candidate or interviewer
+      </p>
+
+      <!-- Error Alert -->
+      <div
+        *ngIf="error()"
+        class="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm"
+      >
+        {{ error() }}
+      </div>
+
+      <form (ngSubmit)="onSubmit()" class="space-y-5">
+        <!-- Name -->
+        <div>
+          <label
+            for="name"
+            class="block text-sm font-medium text-gray-300 mb-1.5"
+          >
+            Full name
+          </label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="name"
+            name="name"
+            placeholder="John Doe"
+            autocomplete="name"
+            class="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label
+            for="email"
+            class="block text-sm font-medium text-gray-300 mb-1.5"
+          >
+            Email address
+          </label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            class="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+          />
+        </div>
+
+        <!-- Role Selection -->
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2"
+            >I am a</label
+          >
+          <div class="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              (click)="role = 'candidate'"
+              [class]="
+                role === 'candidate'
+                  ? 'flex flex-col items-center gap-1.5 p-3 rounded-lg border-2 border-blue-500 bg-blue-500/10 text-blue-400 transition-all'
+                  : 'flex flex-col items-center gap-1.5 p-3 rounded-lg border-2 border-gray-700 bg-gray-800/30 text-gray-400 hover:border-gray-600 transition-all'
+              "
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+              <span class="text-sm font-medium">Candidate</span>
+            </button>
+            <button
+              type="button"
+              (click)="role = 'interviewer'"
+              [class]="
+                role === 'interviewer'
+                  ? 'flex flex-col items-center gap-1.5 p-3 rounded-lg border-2 border-purple-500 bg-purple-500/10 text-purple-400 transition-all'
+                  : 'flex flex-col items-center gap-1.5 p-3 rounded-lg border-2 border-gray-700 bg-gray-800/30 text-gray-400 hover:border-gray-600 transition-all'
+              "
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span class="text-sm font-medium">Interviewer</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label
+            for="password"
+            class="block text-sm font-medium text-gray-300 mb-1.5"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="••••••••"
+            autocomplete="new-password"
+            class="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+          />
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <label
+            for="confirmPassword"
+            class="block text-sm font-medium text-gray-300 mb-1.5"
+          >
+            Confirm password
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            placeholder="••••••••"
+            autocomplete="new-password"
+            class="w-full px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+          />
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          [disabled]="loading()"
+          class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-600/50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+        >
+          <svg
+            *ngIf="loading()"
+            class="animate-spin h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+            ></path>
+          </svg>
+          {{ loading() ? "Creating account..." : "Create account" }}
+        </button>
+      </form>
+
+      <!-- Login Link -->
+      <p class="mt-6 text-center text-sm text-gray-400">
+        Already have an account?
+        <a
+          routerLink="/login"
+          class="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+        >
+          Sign in
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

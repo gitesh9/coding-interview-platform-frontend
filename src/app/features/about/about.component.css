@@ -1,0 +1,225 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.about-wrapper {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #0a0a0f;
+  scroll-behavior: smooth;
+}
+
+/* Background orbs */
+.about-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.08;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #22c55e, transparent 70%);
+  top: -120px;
+  right: -100px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  bottom: 10%;
+  left: -80px;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+  75% {
+    transform: translate(20px, 20px) scale(1.02);
+  }
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, #22c55e, #3b82f6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section structure */
+.section-divider {
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, #22c55e, transparent);
+  margin-bottom: 1rem;
+  border-radius: 1px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+/* Prose blocks */
+.prose-block p {
+  color: #9ca3af;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.prose-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Session steps */
+.session-steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.session-steps li {
+  position: relative;
+  padding-left: 2.5rem;
+  padding-bottom: 1.25rem;
+  color: #9ca3af;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.session-steps li:last-child {
+  padding-bottom: 0;
+  border-left: none;
+}
+
+.session-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: -0.6875rem;
+  top: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 50%;
+  background: #0a0a0f;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Capability cards */
+.capability-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.015);
+  transition: all 0.25s ease;
+}
+
+.capability-card:hover {
+  border-color: rgba(34, 197, 94, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.capability-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  margin-top: 2px;
+}
+
+/* Tech cards */
+.tech-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* CTA card */
+.cta-card {
+  padding: 3rem 2rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.03),
+    rgba(59, 130, 246, 0.03)
+  );
+}
+
+/* Fade in */
+.fade-in {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar */
+.about-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.about-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.about-wrapper::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.about-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}

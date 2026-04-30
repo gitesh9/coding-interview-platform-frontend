@@ -1,0 +1,400 @@
+<div class="about-wrapper">
+  <!-- Ambient background -->
+  <div class="about-bg">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+    <!-- ===== Page Title ===== -->
+    <header class="mb-20 fade-in">
+      <p
+        class="text-sm font-medium text-green-400 tracking-widest uppercase mb-3"
+      >
+        About
+      </p>
+      <h1
+        class="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-6"
+      >
+        What is <span class="hero-gradient-text">CodePrep</span>?
+      </h1>
+      <p class="text-lg text-gray-400 leading-relaxed max-w-3xl">
+        CodePrep is an open, browser-based platform that simulates a real coding
+        interview environment. Candidates practice writing code under time
+        pressure while an AI interviewer asks questions and gives feedback.
+        Interviewers can create sessions, observe candidates live, and take
+        private notes — all from the browser.
+      </p>
+    </header>
+
+    <!-- ===== The Problem ===== -->
+    <section class="mb-20 fade-in">
+      <div class="section-divider"></div>
+      <h2 class="section-title">Why we built this</h2>
+      <div class="prose-block">
+        <p>
+          Most interview prep tools focus on one thing: solving problems. But
+          real interviews test much more — how you communicate your thought
+          process, how you handle follow-up questions, and how you perform under
+          a time constraint. Practicing on a blank editor with no feedback loop
+          leaves a critical gap.
+        </p>
+        <p>
+          CodePrep closes that gap. It pairs a professional-grade code editor
+          with an AI interviewer that listens, responds, and challenges your
+          approach — so you can build both your coding skills and your interview
+          skills simultaneously.
+        </p>
+        <p>
+          For interviewers, CodePrep provides the tools to run real interviews:
+          create sessions with curated problem sets, share a join code with
+          candidates, observe their code in real time, and capture private notes
+          — all without installing anything.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== What You Can Do ===== -->
+    <section class="mb-20 fade-in">
+      <div class="section-divider"></div>
+      <h2 class="section-title">What you can do on CodePrep</h2>
+      <p class="text-gray-500 text-sm mb-10 max-w-2xl">
+        Every feature is designed to mirror a real interview scenario. Here is
+        everything the platform offers today.
+      </p>
+
+      <div class="space-y-6">
+        @for (cap of capabilities; track cap.title; let i = $index) {
+          <div class="capability-card group">
+            <div class="flex items-start gap-5">
+              <!-- Icon -->
+              <div class="capability-icon shrink-0">
+                @switch (cap.icon) {
+                  @case ("editor") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
+                      />
+                    </svg>
+                  }
+                  @case ("mic") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
+                      />
+                    </svg>
+                  }
+                  @case ("bulb") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+                      />
+                    </svg>
+                  }
+                  @case ("timer") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  }
+                  @case ("test") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  }
+                  @case ("library") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122"
+                      />
+                    </svg>
+                  }
+                  @case ("dashboard") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"
+                      />
+                    </svg>
+                  }
+                  @case ("observe") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  }
+                  @case ("notes") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                      />
+                    </svg>
+                  }
+                  @case ("roles") {
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
+                      />
+                    </svg>
+                  }
+                }
+              </div>
+
+              <!-- Content -->
+              <div class="min-w-0">
+                <h3
+                  class="text-base font-semibold text-white mb-1.5 group-hover:text-green-400 transition-colors"
+                >
+                  {{ cap.title }}
+                </h3>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                  {{ cap.description }}
+                </p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- ===== How a Session Works ===== -->
+    <section class="mb-20 fade-in">
+      <div class="section-divider"></div>
+      <h2 class="section-title">How a typical session works</h2>
+
+      <!-- Candidate Flow -->
+      <h3
+        class="text-sm font-semibold text-green-400 uppercase tracking-wider mb-4"
+      >
+        For Candidates
+      </h3>
+      <div class="prose-block mb-10">
+        <ol class="session-steps">
+          <li>
+            <strong class="text-gray-200">Browse the problem library</strong> —
+            filter by difficulty or search by topic to find a challenge that
+            matches your prep goals.
+          </li>
+          <li>
+            <strong class="text-gray-200">Open a problem</strong> — the page
+            splits into the problem description on the left and the code editor
+            on the right. Pick your language and start coding.
+          </li>
+          <li>
+            <strong class="text-gray-200">Set the timer</strong> — click the
+            timer in the navbar, enter a duration (e.g. 25:00), and press play.
+            The countdown begins.
+          </li>
+          <li>
+            <strong class="text-gray-200">Toggle interview mode</strong> — an AI
+            interviewer panel opens. It asks you to explain your approach,
+            probes edge cases, and follows up on your answers. Speak into your
+            mic or type.
+          </li>
+          <li>
+            <strong class="text-gray-200">Join a live session</strong> — if an
+            interviewer shares a join code, enter it on the Join Session page to
+            start a real interview where the interviewer watches your code live.
+          </li>
+          <li>
+            <strong class="text-gray-200">Run test cases</strong> — execute your
+            solution against the provided test cases, review the output, fix
+            bugs, and iterate until all cases pass.
+          </li>
+        </ol>
+      </div>
+
+      <!-- Interviewer Flow -->
+      <h3
+        class="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-4"
+      >
+        For Interviewers
+      </h3>
+      <div class="prose-block">
+        <ol class="session-steps">
+          <li>
+            <strong class="text-gray-200">Create a session</strong> — from the
+            Dashboard, select one or more problems, set a time limit, and
+            generate a unique join code to share with your candidate.
+          </li>
+          <li>
+            <strong class="text-gray-200">Share the join code</strong> — send
+            the code to the candidate via email, Slack, or any channel. They
+            enter it to join the session.
+          </li>
+          <li>
+            <strong class="text-gray-200">Observe live</strong> — once the
+            candidate joins, click "Observe Live" to open a read-only view of
+            their editor. Watch their code, language choice, and progress in
+            real time.
+          </li>
+          <li>
+            <strong class="text-gray-200">Take private notes</strong> — use the
+            built-in notes panel to record observations, flag concerns, or note
+            strengths. Notes are timestamped and auto-saved locally.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Tech & Approach ===== -->
+    <section class="mb-20 fade-in">
+      <div class="section-divider"></div>
+      <h2 class="section-title">Built with</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">Angular</span>
+          <span class="text-xs text-gray-600">Frontend framework</span>
+        </div>
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">Monaco Editor</span>
+          <span class="text-xs text-gray-600">Code editing</span>
+        </div>
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">WebSocket</span>
+          <span class="text-xs text-gray-600">Real-time sync</span>
+        </div>
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">Tailwind CSS</span>
+          <span class="text-xs text-gray-600">Styling</span>
+        </div>
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">Web Speech API</span>
+          <span class="text-xs text-gray-600">Voice input</span>
+        </div>
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">JWT Auth</span>
+          <span class="text-xs text-gray-600">Authentication</span>
+        </div>
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">Flowbite</span>
+          <span class="text-xs text-gray-600">UI components</span>
+        </div>
+        <div class="tech-card">
+          <span class="text-sm font-medium text-gray-300">RxJS</span>
+          <span class="text-xs text-gray-600">Reactive streams</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="fade-in">
+      <div class="cta-card text-center">
+        <h2 class="text-xl sm:text-2xl font-bold text-white mb-3">
+          Ready to start practicing?
+        </h2>
+        <p class="text-sm text-gray-500 mb-6 max-w-md mx-auto">
+          Pick a problem, set a timer, and experience what a real coding
+          interview feels like.
+        </p>
+        <a
+          routerLink="/problemset"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-green-500 text-black font-semibold text-sm hover:bg-green-400 transition-colors"
+        >
+          Browse Problems
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13 7l5 5m0 0l-5 5m5-5H6"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>

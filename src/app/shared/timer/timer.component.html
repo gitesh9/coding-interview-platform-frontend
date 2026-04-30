@@ -1,0 +1,86 @@
+<div
+  class="flex items-center gap-1.5 px-2 py-1 bg-gray-800 rounded-lg border border-gray-700"
+  [class.border-red-500]="timerService.isFinished()"
+  [class.border-gray-700]="!timerService.isFinished()"
+>
+  <!-- Timer display / edit mode -->
+  <ng-container *ngIf="!isEditing(); else editMode">
+    <span
+      (click)="startEditing()"
+      class="timer-display text-sm font-mono tracking-wider min-w-[48px] text-center cursor-pointer hover:text-blue-400 transition-colors select-none"
+      [class.text-white]="
+        !timerService.isFinished() && timerService.totalSeconds() > 0
+      "
+      [class.text-red-400]="timerService.isFinished()"
+      [class.text-gray-500]="timerService.totalSeconds() === 0"
+      [title]="timerService.isRunning() ? '' : 'Click to set timer'"
+    >
+      {{
+        timerService.totalSeconds() === 0 && !timerService.isRunning()
+          ? "Set"
+          : timerService.formattedTime
+      }}
+    </span>
+  </ng-container>
+
+  <ng-template #editMode>
+    <input
+      #timerInput
+      [(ngModel)]="editValue"
+      (keydown)="onEditKeyDown($event)"
+      (blur)="confirmEdit()"
+      class="timer-display bg-transparent text-white text-sm font-mono tracking-wider w-[64px] text-center border-b border-blue-500 outline-none"
+      placeholder="MM:SS"
+      maxlength="8"
+      autofocus
+    />
+  </ng-template>
+
+  <!-- Play/Pause button -->
+  <button
+    (click)="timerService.toggle()"
+    [disabled]="timerService.totalSeconds() === 0"
+    class="p-1 text-gray-400 hover:text-white rounded hover:bg-gray-700 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+    [title]="timerService.isRunning() ? 'Pause timer' : 'Start timer'"
+  >
+    <!-- Play icon -->
+    <svg
+      *ngIf="!timerService.isRunning()"
+      class="w-3.5 h-3.5"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M8 5v14l11-7z" />
+    </svg>
+    <!-- Pause icon -->
+    <svg
+      *ngIf="timerService.isRunning()"
+      class="w-3.5 h-3.5"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+    </svg>
+  </button>
+
+  <!-- Reset button -->
+  <button
+    (click)="timerService.reset()"
+    class="p-1 text-gray-400 hover:text-white rounded hover:bg-gray-700 transition-colors cursor-pointer"
+    title="Reset timer"
+  >
+    <svg
+      class="w-3.5 h-3.5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+      />
+    </svg>
+  </button>
+</div>

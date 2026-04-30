@@ -1,0 +1,107 @@
+<div class="h-screen flex flex-col bg-[#0a0a0f]">
+  <!-- Top Bar -->
+  <div
+    class="flex items-center justify-between px-4 py-2.5 border-b border-gray-800/50 bg-gray-900/30"
+  >
+    <div class="flex items-center gap-3">
+      <a routerLink="/dashboard" class="flex items-center gap-2 group">
+        <img
+          src="https://flowbite.com/docs/images/logo.svg"
+          class="h-5 transition-transform group-hover:scale-110"
+          alt="Logo"
+        />
+      </a>
+      <div class="h-5 w-px bg-gray-700"></div>
+      <span class="text-sm font-medium text-gray-300">Live Observation</span>
+      <span
+        *ngIf="connected()"
+        class="inline-flex items-center gap-1.5 text-xs text-green-400"
+      >
+        <span class="relative flex h-2 w-2">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex rounded-full h-2 w-2 bg-green-400"
+          ></span>
+        </span>
+        Connected
+      </span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <!-- Candidate Info -->
+      <span *ngIf="session()" class="text-xs text-gray-400">
+        {{ session()?.candidateName || "Candidate" }} &middot;
+        {{ candidateLanguage() | titlecase }}
+      </span>
+
+      <!-- Toggle Notes -->
+      <button
+        (click)="toggleNotes()"
+        [class]="
+          showNotes()
+            ? 'p-1.5 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/30 transition-colors'
+            : 'p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors'
+        "
+        title="Toggle notes panel"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading()" class="flex-1 flex items-center justify-center">
+    <svg
+      class="animate-spin h-8 w-8 text-blue-500"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      ></circle>
+      <path
+        class="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+      ></path>
+    </svg>
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="!loading()" class="flex-1 flex overflow-hidden">
+    <!-- Code Editor (read-only) -->
+    <div [class]="showNotes() ? 'flex-1 min-w-0' : 'w-full'">
+      <ngx-monaco-editor
+        class="h-full w-full"
+        [options]="editorOptions"
+        [(ngModel)]="candidateCode"
+      ></ngx-monaco-editor>
+    </div>
+
+    <!-- Notes Panel -->
+    <app-notes-panel
+      *ngIf="showNotes()"
+      [sessionId]="session()?.id || ''"
+      class="w-80 border-l border-gray-800/50 flex-shrink-0"
+    ></app-notes-panel>
+  </div>
+</div>

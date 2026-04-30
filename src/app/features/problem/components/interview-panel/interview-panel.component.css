@@ -1,0 +1,43 @@
+.interview-panel {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 380px;
+  max-height: 520px;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.interview-panel.minimized {
+  max-height: none;
+  height: auto;
+}
+
+.messages-area {
+  min-height: 200px;
+  max-height: 340px;
+}
+
+.messages-area::-webkit-scrollbar {
+  width: 4px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 2px;
+}
+
+textarea {
+  max-height: 80px;
+  scrollbar-width: thin;
+}

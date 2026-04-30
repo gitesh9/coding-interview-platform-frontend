@@ -1,7 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EditorComponent } from 'ngx-monaco-editor-v2';
+import { AiService } from '@core/services/ai-service/ai.service';
+import { InterviewService } from '@core/services/interview-service/interview.service';
 
 interface LanguageOption {
   id: string;
@@ -14,10 +24,14 @@ interface LanguageOption {
   standalone: true,
   imports: [CommonModule, FormsModule, EditorComponent],
   templateUrl: './code-editor.component.html',
-  styleUrl: './code-editor.component.css'
+  styleUrl: './code-editor.component.css',
 })
 export class CodeEditorComponent implements OnInit {
+  private aiService = inject(AiService);
+  interviewService = inject(InterviewService);
+
   @Input({ required: true }) starterCode!: Record<string, string>;
+  @Input() problemDescription = '';
   @Output() codeChange = new EventEmitter<string>();
   @Output() languageChange = new EventEmitter<string>();
   @Output() run = new EventEmitter<void>();
@@ -27,13 +41,16 @@ export class CodeEditorComponent implements OnInit {
     { id: 'python', label: 'Python', monacoLanguage: 'python' },
     { id: 'javascript', label: 'JavaScript', monacoLanguage: 'javascript' },
     { id: 'java', label: 'Java', monacoLanguage: 'java' },
-    { id: 'cpp', label: 'C++', monacoLanguage: 'cpp' }
+    { id: 'cpp', label: 'C++', monacoLanguage: 'cpp' },
   ];
 
   selectedLanguage = signal<string>('python');
   isDarkTheme = signal(true);
   code = '';
   showLanguageDropdown = signal(false);
+  hintText = signal('');
+  hintLoading = signal(false);
+  showHint = signal(false);
 
   editorOptions: Record<string, unknown> = {};
 
@@ -43,11 +60,17 @@ export class CodeEditorComponent implements OnInit {
   }
 
   get currentLanguageLabel(): string {
-    return this.languages.find(l => l.id === this.selectedLanguage())?.label || 'Python';
+    return (
+      this.languages.find((l) => l.id === this.selectedLanguage())?.label ||
+      'Python'
+    );
   }
 
   get currentMonacoLanguage(): string {
-    return this.languages.find(l => l.id === this.selectedLanguage())?.monacoLanguage || 'python';
+    return (
+      this.languages.find((l) => l.id === this.selectedLanguage())
+        ?.monacoLanguage || 'python'
+    );
   }
 
   updateEditorOptions(): void {
@@ -63,7 +86,7 @@ export class CodeEditorComponent implements OnInit {
       renderLineHighlight: 'line',
       cursorBlinking: 'smooth',
       smoothScrolling: true,
-      tabSize: 4
+      tabSize: 4,
     };
   }
 
@@ -96,5 +119,22 @@ export class CodeEditorComponent implements OnInit {
 
   closeDropdown(): void {
     this.showLanguageDropdown.set(false);
+  }
+
+  getHint(): void {
+    if (this.hintLoading()) return;
+    this.hintLoading.set(true);
+    this.showHint.set(false);
+    this.aiService
+      .getHint(this.code, this.problemDescription, this.selectedLanguage())
+      .subscribe((hint) => {
+        this.hintText.set(hint);
+        this.showHint.set(true);
+        this.hintLoading.set(false);
+      });
+  }
+
+  dismissHint(): void {
+    this.showHint.set(false);
   }
 }

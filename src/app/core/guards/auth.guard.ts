@@ -1,0 +1,47 @@
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { AuthService } from '@core/services/auth-service/auth.service';
+
+export const authGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.isAuthenticated()) {
+    return true;
+  }
+  router.navigate(['/login']);
+  return false;
+};
+
+export const interviewerGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.isAuthenticated() && authService.isInterviewer()) {
+    return true;
+  }
+  router.navigate(['/']);
+  return false;
+};
+
+export const candidateGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.isAuthenticated() && authService.isCandidate()) {
+    return true;
+  }
+  router.navigate(['/']);
+  return false;
+};
+
+export const guestGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (!authService.isAuthenticated()) {
+    return true;
+  }
+  router.navigate(['/']);
+  return false;
+};

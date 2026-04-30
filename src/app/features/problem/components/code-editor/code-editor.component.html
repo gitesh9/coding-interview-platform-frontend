@@ -106,7 +106,85 @@
           />
         </svg>
       </button>
+
+      <!-- Hint button (hidden in interview mode) -->
+      <button
+        *ngIf="!interviewService.isInterviewMode()"
+        (click)="getHint()"
+        [disabled]="hintLoading()"
+        class="p-1.5 text-yellow-400 hover:text-yellow-300 rounded-md hover:bg-[#3d3d3d] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        title="Get a hint"
+      >
+        <!-- Spinner when loading -->
+        <svg
+          *ngIf="hintLoading()"
+          class="w-4 h-4 animate-spin"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+          ></path>
+        </svg>
+        <!-- Lightbulb icon -->
+        <svg
+          *ngIf="!hintLoading()"
+          class="w-4 h-4"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"
+          />
+        </svg>
+      </button>
     </div>
+  </div>
+
+  <!-- Hint Banner -->
+  <div
+    *ngIf="showHint()"
+    class="flex items-start gap-2 px-3 py-2 bg-yellow-900/30 border-b border-yellow-700/50 text-yellow-200 text-sm shrink-0"
+  >
+    <svg
+      class="w-4 h-4 mt-0.5 shrink-0 text-yellow-400"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"
+      />
+    </svg>
+    <span class="flex-1">{{ hintText() }}</span>
+    <button
+      (click)="dismissHint()"
+      class="text-yellow-400 hover:text-yellow-200 cursor-pointer shrink-0"
+      title="Dismiss hint"
+    >
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
   </div>
 
   <!-- Monaco Editor -->

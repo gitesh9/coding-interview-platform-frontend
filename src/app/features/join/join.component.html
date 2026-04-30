@@ -1,0 +1,93 @@
+<div class="min-h-screen flex items-center justify-center bg-[#0a0a0f] px-4">
+  <div class="w-full max-w-md">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <a routerLink="/" class="inline-flex items-center gap-2.5 group">
+        <img
+          src="https://flowbite.com/docs/images/logo.svg"
+          class="h-8 transition-transform group-hover:scale-110"
+          alt="Logo"
+        />
+        <span class="text-xl font-semibold text-white tracking-tight">
+          Smart Coding Platform
+        </span>
+      </a>
+    </div>
+
+    <!-- Card -->
+    <div
+      class="bg-gray-900/50 border border-gray-800/50 rounded-2xl p-8 backdrop-blur-sm"
+    >
+      <h2 class="text-2xl font-bold text-white mb-2">Join Interview</h2>
+      <p class="text-gray-400 text-sm mb-6">
+        Enter the code provided by your interviewer
+      </p>
+
+      <!-- Error Alert -->
+      <div
+        *ngIf="error()"
+        class="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm"
+      >
+        {{ error() }}
+      </div>
+
+      <form (ngSubmit)="onSubmit()" class="space-y-5">
+        <!-- Join Code -->
+        <div>
+          <label
+            for="joinCode"
+            class="block text-sm font-medium text-gray-300 mb-1.5"
+          >
+            Join Code
+          </label>
+          <input
+            type="text"
+            id="joinCode"
+            [(ngModel)]="joinCode"
+            name="joinCode"
+            placeholder="Enter join code"
+            class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white text-center text-lg font-mono tracking-widest placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors uppercase"
+          />
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          [disabled]="loading()"
+          class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-600/50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+        >
+          <svg
+            *ngIf="loading()"
+            class="animate-spin h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+            ></path>
+          </svg>
+          {{ loading() ? "Joining..." : "Join Session" }}
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-sm text-gray-400">
+        <a
+          routerLink="/problemset"
+          class="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+        >
+          Practice on your own instead
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

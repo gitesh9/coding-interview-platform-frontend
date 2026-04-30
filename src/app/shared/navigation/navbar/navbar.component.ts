@@ -9,21 +9,23 @@ import {
 } from '@angular/core';
 import { NavigationService } from '@core/services/navigation-service/navigation.service';
 import { UserComponent } from '../../user/user.component';
-import { TabsComponent } from '../tabs/tabs.component';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '@shared/navigation/sidebar/sidebar.component';
 import { ActionButtonsComponent } from '../../action-buttons/action-buttons.component';
+import { TimerComponent } from '../../timer/timer.component';
+import { InterviewService } from '@core/services/interview-service/interview.service';
+import { AuthService } from '@core/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-navbar',
   imports: [
     UserComponent,
-    TabsComponent,
     CommonModule,
     SidebarComponent,
     ActionButtonsComponent,
+    TimerComponent,
     RouterModule,
   ],
   templateUrl: './navbar.component.html',
@@ -31,6 +33,8 @@ import { ActionButtonsComponent } from '../../action-buttons/action-buttons.comp
 })
 export class NavbarComponent implements OnInit {
   private router = inject(Router);
+  interviewService = inject(InterviewService);
+  authService = inject(AuthService);
   currentUrl = signal(this.router.url);
   isProblemPage = computed(() => this.currentUrl().startsWith('/problem/'));
 
@@ -58,5 +62,13 @@ export class NavbarComponent implements OnInit {
   }
   openSidebar() {
     this.stateService.setSidebarOpen(true);
+  }
+
+  toggleInterview(): void {
+    if (this.interviewService.isInterviewMode()) {
+      this.interviewService.endInterview();
+    } else {
+      this.interviewService.startInterview('');
+    }
   }
 }

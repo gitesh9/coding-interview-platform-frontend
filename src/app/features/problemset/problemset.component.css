@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.problemset-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  background: #0a0a0f;
+}
+
+.problem-row {
+  text-decoration: none;
+}
+
+/* Scrollbar */
+.problemset-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.problemset-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.problemset-wrapper::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.problemset-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}

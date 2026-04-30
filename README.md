@@ -1,59 +1,96 @@
-# CodingInterviewPlatform
+# CodePrep — Coding Interview Platform
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+A browser-based coding interview platform built with Angular 19. Candidates practice problems with an AI interviewer, and real interviewers can create sessions, observe candidates live, and take private notes.
+
+## Features
+
+### For Candidates
+- **Monaco Code Editor** — VS Code-grade editor with syntax highlighting, auto-complete, and multi-cursor editing (Python, JavaScript, Java, C++)
+- **AI Mock Interviewer** — Practice with an AI that asks follow-up questions and probes your approach via text or voice (Web Speech API)
+- **Context-Aware Hints** — Get targeted nudges without spoiling the solution
+- **Test Case Runner** — Run and submit code against predefined test cases with pass/fail results
+- **Countdown Timer** — Configurable timer to simulate interview time pressure
+- **Problem Library** — Curated problems organized by difficulty (Easy, Medium, Hard)
+- **Join Live Sessions** — Enter a join code from an interviewer to start a real interview
+
+### For Interviewers
+- **Dashboard** — Create interview sessions, select problems, set time limits, and generate shareable join codes
+- **Live Code Observation** — Watch candidates code in real time via WebSocket-powered read-only editor view
+- **Private Notes** — Timestamped note-taking panel during live sessions, auto-saved locally and invisible to candidates
+- **Session Management** — Track sessions by status (waiting, active, completed)
+
+### Platform
+- **Role-Based Auth** — JWT authentication with interviewer and candidate roles
+- **Route Guards** — Protected routes based on authentication and role
+- **Auth-Aware Navigation** — Navbar adapts to show role-specific links (Dashboard, Join Session, Sign in/out)
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Angular 19 | Frontend framework (standalone components, signals) |
+| Monaco Editor | Code editing (via ngx-monaco-editor-v2) |
+| WebSocket | Real-time code sync between candidate and interviewer |
+| Tailwind CSS + Flowbite | Styling and UI components |
+| Web Speech API | Voice input for AI interview mode |
+| RxJS | Reactive state and async streams |
+| JWT | Authentication tokens |
+
+## Project Structure
+
+```
+src/app/
+├── core/
+│   ├── guards/           # Route guards (auth, role, guest)
+│   ├── interceptors/     # HTTP auth interceptor
+│   ├── models/           # TypeScript interfaces (auth, problem, AI)
+│   └── services/
+│       ├── auth-service/          # Login, register, JWT management
+│       ├── session-service/       # Interview session CRUD
+│       ├── collaboration-service/ # WebSocket real-time sync
+│       ├── ai-service/            # AI interviewer mock
+│       ├── code-execution/        # Run/submit code
+│       ├── interview-service/     # Interview mode state
+│       ├── problem-service/       # Problem data fetching
+│       ├── speech-recognition/    # Web Speech API wrapper
+│       ├── timer-service/         # Countdown timer
+│       └── navigation-service/    # Sidebar state
+├── features/
+│   ├── auth/             # Login & Register pages
+│   ├── dashboard/        # Interviewer dashboard
+│   ├── join/             # Candidate join session page
+│   ├── observe/          # Live observation view + notes panel
+│   ├── home/             # Landing page
+│   ├── problem/          # Problem solving page (editor, tests, interview panel)
+│   ├── problemset/       # Problem browsing & search
+│   └── about/            # About page
+└── shared/
+    ├── navigation/       # Navbar, sidebar, tabs
+    ├── action-buttons/   # Run/submit buttons
+    ├── timer/            # Timer component
+    └── user/             # User avatar component
+```
 
 ## Development server
-
-To start a local development server, run:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200/`. The app auto-reloads on file changes.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+The backend API is expected at `http://localhost:8000` (configured in `src/environments/environment.ts`).
 
 ## Building
-
-To build the project run:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts go to `dist/coding-interview-platform`.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Running tests
 
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

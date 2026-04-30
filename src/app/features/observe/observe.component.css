@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+ngx-monaco-editor {
+  display: block;
+  height: 100%;
+}

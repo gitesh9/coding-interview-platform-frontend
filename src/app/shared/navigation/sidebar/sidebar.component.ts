@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { NavigationService } from '@core/services/navigation-service/navigation.service';
 import { ProblemService } from '@core/services/problem-service/problem.service';
-import { Problem } from '@core/models/problem.model';
+import { ProblemListItem } from '@core/models/problem.model';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   isOpen = false;
-  problems: Problem[] = [];
+  problems: ProblemListItem[] = [];
   @ViewChild('allProblemsLink', { static: false }) allProblemsLink!: ElementRef;
   @ViewChild('drawer', { static: false }) drawer!: ElementRef;
 
