@@ -48,7 +48,7 @@ src/app/
 │       ├── auth-service/          # Login, register, JWT management
 │       ├── session-service/       # Interview session CRUD
 │       ├── collaboration-service/ # WebSocket real-time sync
-│       ├── ai-service/            # AI interviewer mock
+│       ├── ai-service/            # AI interviewer (OpenAI-powered)
 │       ├── code-execution/        # Run/submit code
 │       ├── interview-service/     # Interview mode state
 │       ├── problem-service/       # Problem data fetching
