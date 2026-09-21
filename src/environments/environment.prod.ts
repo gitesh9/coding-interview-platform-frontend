@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiGatewayUrl: 'http://localhost:8000',
+  apiGatewayUrl: 'https://52-21-196-176.sslip.io',
 };

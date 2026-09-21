@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist/coding-interview-platform/browser"
+
+# Angular routes are client-side; without this, deep links 404 on refresh.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
